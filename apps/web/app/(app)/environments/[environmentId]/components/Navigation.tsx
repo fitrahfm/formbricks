@@ -63,6 +63,7 @@ interface NavigationProps {
   environments: TEnvironment[];
   isFormbricksCloud: boolean;
   surveyBaseUrl: string;
+  isPricingDisabled: boolean;
 }
 
 export default function Navigation({
@@ -74,6 +75,7 @@ export default function Navigation({
   environments,
   isFormbricksCloud,
   surveyBaseUrl,
+  isPricingDisabled,
 }: NavigationProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -166,7 +168,7 @@ export default function Navigation({
           icon: CreditCardIcon,
           label: "Billing & Plan",
           href: `/environments/${environment.id}/settings/billing`,
-          hidden: !isFormbricksCloud,
+          hidden: !isFormbricksCloud || isPricingDisabled,
         },
       ],
     },
